@@ -1,0 +1,26 @@
+﻿<Window x:Class="DB_Example_WPF_and_Entity.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DB_Example_WPF_and_Entity"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="399.201" Width="803.207"
+        FontSize="14">
+
+    <DockPanel LastChildFill="True">
+        <UniformGrid DockPanel.Dock="Top" Rows="1" Columns="4">
+            <Button Margin="5" Padding="3" Click="Button_Click_Admin">Пользователи</Button>
+            <Button Margin="5" Padding="3" Content="Right Top" ></Button>
+            <Button Margin="5" Padding="3" Content="Left Bottom" ></Button>
+            <Button Margin="5" Padding="3" Content="Right Bottom" ></Button>
+        </UniformGrid>
+        <StackPanel DockPanel.Dock="Left">
+            <Button Content="Компании" Margin="5" Padding="3" Click="Button_Click"></Button>
+            <Button Content="Устройства" Margin="5" Padding="3" Click="Button_Click_1"></Button>                
+        </StackPanel>
+        <DataGrid x:Name="Table" ColumnWidth="*"/>
+    </DockPanel>
+
+</Window>
