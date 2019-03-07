@@ -50,14 +50,18 @@ namespace DB_Example_WPF_and_Entity
             }
         }
 
-       
+
 
         private void UsersBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ErrorText.Text = "";
             int index = UsersBox.SelectedIndex;
+            if (index == -1)
+            {
+                index = 0;
+            }
             int UserId = users[index].UserId;
-            user = context.Users.Include("Roles").FirstOrDefault(v=>v.UserId==UserId);
+            user = context.Users.Include("Roles").FirstOrDefault(v => v.UserId == UserId);
             UserName.Text = user.UserName;
             FullName.Text = user.FullName;
             userRoles = user.Roles.ToList();

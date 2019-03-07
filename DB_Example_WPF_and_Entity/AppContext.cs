@@ -18,9 +18,11 @@ namespace DB_Example_WPF_and_Entity
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Company> Companies { get; set; }
-        public DbSet<Device> Devices { get; set; }
+        public DbSet<Device> Devices { get; set; }      
         
     }
+
+
 
     public class User
     {
@@ -50,7 +52,7 @@ namespace DB_Example_WPF_and_Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RoleId { get; set; }
-        [Required]
+        [Required]        
         public string RoleName { get; set; }
 
         public ICollection<User> Users { get; set; }
@@ -68,6 +70,7 @@ namespace DB_Example_WPF_and_Entity
         public int CompanyId { get; set; }
         [Required]
         [MaxLength(50)]
+        [Index(IsUnique = true)]
         public string CompanyName { get; set; }
         [MaxLength(50)]
         public string CompanyPublicName { get; set; }
@@ -84,9 +87,25 @@ namespace DB_Example_WPF_and_Entity
         [Required]
         public decimal Price { get; set; }
         [Required]
-        public int CompanyId { get; set; }       
+        public int CompanyId { get; set; }
         [ForeignKey("CompanyId")]
         public Company Company { get; set; }
+
+        [NotMapped]
+        public string CompanyName
+        {
+            get
+            {
+                if (Company!=null)
+                {
+                    return Company.CompanyName;
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
     }
 
     

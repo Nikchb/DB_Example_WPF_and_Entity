@@ -15,7 +15,8 @@ namespace DB_Example_WPF_and_Entity.Migrations
                         CompanyName = c.String(nullable: false, maxLength: 50),
                         CompanyPublicName = c.String(maxLength: 50),
                     })
-                .PrimaryKey(t => t.CompanyId);
+                .PrimaryKey(t => t.CompanyId)
+                .Index(t => t.CompanyName, unique: true);
             
             CreateTable(
                 "dbo.Devices",
@@ -75,6 +76,7 @@ namespace DB_Example_WPF_and_Entity.Migrations
             DropIndex("dbo.UserRoles", new[] { "User_UserId" });
             DropIndex("dbo.Users", new[] { "UserName" });
             DropIndex("dbo.Devices", new[] { "CompanyId" });
+            DropIndex("dbo.Companies", new[] { "CompanyName" });
             DropTable("dbo.UserRoles");
             DropTable("dbo.Users");
             DropTable("dbo.Roles");

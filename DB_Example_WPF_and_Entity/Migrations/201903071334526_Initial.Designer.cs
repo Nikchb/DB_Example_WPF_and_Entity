@@ -13,7 +13,7 @@ namespace DB_Example_WPF_and_Entity.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201902080502198_Initial"; }
+            get { return "201903071334526_Initial"; }
         }
         
         string IMigrationMetadata.Source

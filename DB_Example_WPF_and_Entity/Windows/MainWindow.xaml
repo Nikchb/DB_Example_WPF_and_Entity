@@ -11,14 +11,14 @@
 
     <DockPanel LastChildFill="True">
         <UniformGrid DockPanel.Dock="Top" Rows="1" Columns="4">
-            <Button Margin="5" Padding="3" Click="Button_Click_Admin">Пользователи</Button>
-            <Button Margin="5" Padding="3" Content="Right Top" ></Button>
-            <Button Margin="5" Padding="3" Content="Left Bottom" ></Button>
-            <Button Margin="5" Padding="3" Content="Right Bottom" ></Button>
+            <Button Margin="5" Padding="3" Click="Admin">Пользователи</Button>
+            <Button Margin="5" Padding="3" Click="Add">Добавить</Button>
+            <Button Margin="5" Padding="3" Click="Edit">Редактировать</Button>
+            <Button Margin="5" Padding="3" Click="Delete">Удалить</Button>
         </UniformGrid>
         <StackPanel DockPanel.Dock="Left">
-            <Button Content="Компании" Margin="5" Padding="3" Click="Button_Click"></Button>
-            <Button Content="Устройства" Margin="5" Padding="3" Click="Button_Click_1"></Button>                
+            <Button Content="Компании" Margin="5" Padding="3" Click="TableCompany"></Button>
+            <Button Content="Устройства" Margin="5" Padding="3" Click="TableDevice"></Button>                
         </StackPanel>
         <DataGrid x:Name="Table" ColumnWidth="*"/>
     </DockPanel>

@@ -48,23 +48,27 @@ namespace DB_Example_WPF_and_Entity
             }
             else
             {
-                try
+                MessageBoxResult messageBoxResult = MessageBox.Show("Создать нового пользователя?", "Подтверждение создания пользователя", MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
                 {
+                    try
+                    {
 
-                    context.Users.Add(new User { UserName = UserName.Text, Password = SHA512(Password.Password), FullName = "NewUser" });
-                    context.SaveChanges();
-                    MainWindow window = new MainWindow(context);
-                    window.Show();
-                    this.Close();
-                }               
-                catch
-                {
-                    ErrorMessage.Text = "Недопустимые логин или пароль!";
+                        context.Users.Add(new User { UserName = UserName.Text, Password = SHA512(Password.Password), FullName = "NewUser" });
+                        context.SaveChanges();
+                        MainWindow window = new MainWindow(context);
+                        window.Show();
+                        this.Close();
+                    }
+                    catch
+                    {
+                        ErrorMessage.Text = "Возникла ошибка!";
+                    }
                 }
             }
         }
 
-        private static string SHA512(string input)
+        public static string SHA512(string input)
         {
             var bytes = System.Text.Encoding.UTF8.GetBytes(input);
             using (var hash = System.Security.Cryptography.SHA512.Create())
